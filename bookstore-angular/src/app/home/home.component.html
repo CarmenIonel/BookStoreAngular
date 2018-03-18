@@ -1,0 +1,320 @@
+<button class="btn btn-info back" (click)="updateAccountB()" >
+  <span class="glyphicon glyphicon-arrow-left" ></span> Update account</button>
+<button class="btn btn-info back" (click)="viewAccountB()" >
+  <span class="glyphicon glyphicon-arrow-left" ></span> View account</button>
+<button class="btn btn-info back" (click)="searchTitleB()" >
+
+  <span class="glyphicon glyphicon-arrow-left" ></span> Search By Title</button>
+<button class="btn btn-info back" (click)="searchAuthorB()" >
+  <span class="glyphicon glyphicon-arrow-left" ></span> Search By Author</button>
+<button class="btn btn-info back" (click)="searchGenreB()" >
+  <span class="glyphicon glyphicon-arrow-left" ></span> Search By Genre</button>
+<button class="btn btn-info back" (click)="logout()" >
+  <span class="glyphicon glyphicon-arrow-left" ></span> LogOut</button><br/>
+
+<div *ngIf = "searchTitle == true">
+  <div class="field-wrap input-group form-group">
+    <i class="input-group-addon glyphicon  glyphicon-user"></i>
+    <input #TitleS type="text" placeholder="Title" class="form-control"/>
+  </div>
+
+  <button class="btn btn-info back" (click)="searchTitleF(TitleS.value)" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> Search by title</button><br/>
+  <table>
+    <tr><td>Title</td>
+      <td>Author</td>
+      <td>Genre</td>
+      <td>Price</td>
+    </tr>
+    <tr *ngFor = "let book of list">
+      <td>{{book.title}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.genre}}</td>
+      <td>{{book.price}}</td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf = "searchAuthor == true">
+  <div class="field-wrap input-group form-group">
+    <i class="input-group-addon glyphicon  glyphicon-user"></i>
+    <input #AuthorS type="text" placeholder="Author" class="form-control"/>
+  </div>
+
+  <button class="btn btn-info back" (click)="searchAuthorF(AuthorS.value)" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> Search by author</button><br/>
+  <table>
+    <tr><td>Title</td>
+      <td>Author</td>
+      <td>Genre</td>
+      <td>Price</td>
+    </tr>
+    <tr *ngFor = "let book of list">
+      <td>{{book.title}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.genre}}</td>
+      <td>{{book.price}}</td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf = "searchGenre == true">
+  <div class="field-wrap input-group form-group">
+    <i class="input-group-addon glyphicon  glyphicon-user"></i>
+    <input #GenreS type="text" placeholder="Genre" class="form-control"/>
+  </div>
+
+  <button class="btn btn-info back" (click)="searchGenreF(GenreS.value)" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> Search by genre</button><br/>
+  <table>
+    <tr><td>Title</td>
+      <td>Author</td>
+      <td>Genre</td>
+      <td>Price</td>
+    </tr>
+    <tr *ngFor = "let book of list">
+      <td>{{book.title}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.genre}}</td>
+      <td>{{book.price}}</td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf = "updateAccount == true">
+  <div class="field-wrap input-group form-group">
+    <i class="input-group-addon glyphicon  glyphicon-user"></i>
+    <input #SearchUsername type="text" placeholder="Search by username" class="form-control"/>
+  </div>
+
+  <div class="field-wrap input-group form-group">
+    <i class="input-group-addon glyphicon  glyphicon-user"></i>
+    <input #NameUP type="text" placeholder="Name" class="form-control"/>
+  </div>
+
+  <div class="field-wrap input-group form-group">
+    <i class="input-group-addon glyphicon  glyphicon-user"></i>
+    <input #PhoneUP type="text" placeholder="Phone" class="form-control"/>
+  </div>
+
+  <div class="field-wrap input-group form-group">
+    <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+    <input #EmailUP type="email" ng-model="string" placeholder="Email" required class="form-control"/>
+  </div>
+  <button class="btn btn-info back" (click)="updateAccountF(SearchUsername.value, NameUP.value, PhoneUP.value, EmailUP.value)" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> Update Account</button><br/>
+
+</div>
+
+<div *ngIf = "viewAccount == true">
+  <div class="field-wrap input-group form-group">
+    <i class="input-group-addon glyphicon  glyphicon-user"></i>
+    <input #SearchUsernameView type="text" placeholder="Search by username" class="form-control"/>
+  </div>
+  <button class="btn btn-info back" (click)="viewAccountF(SearchUsernameView.value)" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> View Account</button><br/>
+
+  <div *ngIf = "seeDetails == true">
+      <p>
+        Name: {{userView.name}}
+      </p>
+      <p>
+        Phone: {{userView.phone}}
+      </p>
+      <p>
+        Email: {{userView.email}}
+      </p>
+  </div>
+
+</div>
+
+<div *ngIf = "admin == true">
+
+  <button class="btn btn-info back" (click)="addBookB()" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> Add Book</button>
+  <button class="btn btn-info back" (click)="updateBookB()" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> Update Book</button>
+  <button class="btn btn-info back" (click)="deleteBookB()" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> Delete Book</button>
+  <button class="btn btn-info back" (click)="generateReportF()" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> Generate Report</button>
+
+  <div *ngIf = "addBook == true">
+    <div class="field-wrap input-group form-group">
+      <i class="input-group-addon glyphicon  glyphicon-user"></i>
+      <input #ISBN type="text" placeholder="ISBN" class="form-control"/>
+    </div>
+
+    <div class="field-wrap input-group form-group">
+      <i class="input-group-addon glyphicon  glyphicon-user"></i>
+      <input #Title type="text" placeholder="Title" class="form-control"/>
+    </div>
+
+    <div class="field-wrap input-group form-group">
+      <i class="input-group-addon glyphicon  glyphicon-user"></i>
+      <input #Author type="text" placeholder="Author" class="form-control"/>
+    </div>
+
+    <div class="field-wrap input-group form-group">
+      <i class="input-group-addon glyphicon  glyphicon-user"></i>
+      <input #Genre type="text" placeholder="Genre" class="form-control"/>
+    </div>
+
+    <div class="field-wrap input-group form-group">
+      <i class="input-group-addon glyphicon  glyphicon-user"></i>
+      <input #Description type="text" placeholder="Description" class="form-control"/>
+    </div>
+
+    <div class="field-wrap input-group form-group">
+      <i class="input-group-addon glyphicon  glyphicon-user"></i>
+      <input #Price type="number" placeholder="Price" class="form-control"/>
+    </div>
+
+    <div class="field-wrap input-group form-group">
+      <i class="input-group-addon glyphicon  glyphicon-user"></i>
+      <input #Stock type="number" placeholder="Stock" class="form-control"/>
+    </div>
+
+    <button class="btn btn-info back" (click)="addBookF(ISBN.value, Title.value, Author.value, Genre.value,
+                                                        Description.value, Price.value, Stock.value)" >
+      <span class="glyphicon glyphicon-arrow-left" ></span> Add Book</button><br/>
+  </div>
+
+  <div *ngIf = "updateBook == true">
+    <div class="field-wrap input-group form-group">
+      <i class="input-group-addon glyphicon  glyphicon-user"></i>
+      <input #SearchISBNU type="text" placeholder="Search by ISBN" class="form-control"/>
+    </div>
+
+    <div class="field-wrap input-group form-group">
+      <i class="input-group-addon glyphicon  glyphicon-user"></i>
+      <input #DescriptionU type="text" placeholder="Description" class="form-control"/>
+    </div>
+
+    <div class="field-wrap input-group form-group">
+      <i class="input-group-addon glyphicon  glyphicon-user"></i>
+      <input #PriceU type="number" placeholder="Price" class="form-control"/>
+    </div>
+
+    <div class="field-wrap input-group form-group">
+      <i class="input-group-addon glyphicon  glyphicon-user"></i>
+      <input #StockU type="number" placeholder="Stock" class="form-control"/>
+    </div>
+
+    <button class="btn btn-info back" (click)="updateBookF(SearchISBNU.value,DescriptionU.value, PriceU.value, StockU.value)" >
+      <span class="glyphicon glyphicon-arrow-left" ></span> Update Book</button><br/>
+  </div>
+
+  <div *ngIf = "deleteBook == true">
+    <div class="field-wrap input-group form-group">
+      <i class="input-group-addon glyphicon  glyphicon-user"></i>
+      <input #SearchISBND type="text" placeholder="ISBN" class="form-control"/>
+    </div>
+
+    <button class="btn btn-info back" (click)="deleteBookF(SearchISBND.value)" >
+      <span class="glyphicon glyphicon-arrow-left" ></span> Delete Book</button><br/>
+  </div>
+
+</div>
+
+<div *ngIf = "admin == false">
+  <button class="btn btn-info back" (click)="viewBooksB()" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> View Books</button>
+  <button class="btn btn-info back" (click)="viewShoppingCartB()" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> View ShoppingCart</button>
+  <button class="btn btn-info back" (click)="viewOrdersB()" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> View Orders</button>
+  <button class="btn btn-info back" (click)="createOrderF()" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> Create Order</button><br/>
+
+  <button class="btn btn-info back" (click)="addItemB()" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> Add Item</button>
+  <button class="btn btn-info back" (click)="removeItemB()" >
+    <span class="glyphicon glyphicon-arrow-left" ></span> Remove Item</button>
+
+  <div *ngIf = "detailAdd == true">
+        <p>
+          Add a book to the cart:
+        </p>
+        <div class="field-wrap input-group form-group">
+          <i class="input-group-addon glyphicon  glyphicon-user"></i>
+          <input #ISBNADD type="text" placeholder="ISBN of the book" class="form-control"/>
+        </div>
+        <div class="field-wrap input-group form-group">
+          <i class="input-group-addon glyphicon  glyphicon-user"></i>
+          <input #Qantity type="text" placeholder="Quantity" class="form-control"/>
+        </div>
+        <button class="btn btn-info back" (click)="addItemF(ISBNADD.value,Qantity.value)" >
+          <span class="glyphicon glyphicon-arrow-left" ></span> Add </button>
+  </div>
+
+  <div *ngIf = "detailRemove == true">
+        <p>
+          Remove a book from the cart:
+        </p>
+        <div class="field-wrap input-group form-group">
+          <i class="input-group-addon glyphicon  glyphicon-user"></i>
+          <input #ISBNDEL type="text" placeholder="ISBN of the book" class="form-control"/>
+        </div>
+        <div class="field-wrap input-group form-group">
+          <i class="input-group-addon glyphicon  glyphicon-user"></i>
+          <input #QantityDEL type="text" placeholder="Quantity" class="form-control"/>
+        </div>
+        <button class="btn btn-info back" (click)="removeItemF(ISBNDEL.value, QantityDEL.value)" >
+          <span class="glyphicon glyphicon-arrow-left" ></span> Remove</button>
+  </div>
+
+  <div *ngIf = "viewBooks == true">
+    <table>
+      <tr>
+        <td>ISBN</td>
+        <td>Title</td>
+        <td>Author</td>
+        <td>Genre</td>
+        <td>Price</td>
+      </tr>
+      <tr *ngFor = "let book of list">
+        <td>{{book.isbn}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.genre}}</td>
+        <td>{{book.price}}</td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div *ngIf = "viewOrders == true">
+    <table>
+      <tr>
+        <td>Delivery date</td>
+        <td>Price</td>
+      </tr>
+      <tr *ngFor = "let order of list2">
+        <td>{{order.deliveryDate}}</td>
+        <td>{{order.price}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div *ngIf = "viewCart == true">
+
+    <p>
+      Total price: {{cart.totalPrice}}
+    </p>
+    <p>
+      Items:
+    </p>
+    <table>
+      <tr>
+        <td>Book title</td>
+        <td>Quantity</td>
+      </tr>
+      <tr *ngFor = "let shoppingCartItem of listItem">
+        <td>{{shoppingCartItem.book.title}}</td>
+        <td>{{shoppingCartItem.booksOrdered}}</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
